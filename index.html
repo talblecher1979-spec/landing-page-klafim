@@ -253,8 +253,8 @@
       align-items: center;
     }
     .about-img {
-      width: 320px;
-      height: 400px;
+      width: 420px;
+      height: 520px;
       object-fit: cover;
       object-position: center top;
       border-radius: 16px;
@@ -474,7 +474,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <h1>שוכבים ביחד בסוף היום,<br>שניכם עייפים מהילדים,<br>ואין מה לדבר.</h1>
+      <h1>יושבים ביחד בסוף היום,<br>שניכם עייפים מהילדים,<br>ואין על מה לדבר.</h1>
       <p>קלפי שיח שפותחים שיחה אמיתית, בלי מאמץ, בלי להרגיש שאתם "עובדים על הקשר"</p>
       <a href="#join" class="btn-neon btn-pulse">שלחו לי את הקלפים</a>
     </div>
@@ -494,12 +494,11 @@
   <!-- ABOUT -->
   <section>
     <div class="section-inner">
-      <div class="section-label reveal">מי אני</div>
       <div class="about-wrap">
-        <img src="תמונה2.jpg" alt="טל בלכר" class="about-img reveal-scale">
+        <img src="תמונה2-web.jpg" alt="טל בלכר" class="about-img reveal-scale">
         <div class="about-text">
-          <h2 class="reveal">אני טל בלכר</h2>
-          <p class="reveal delay-1">נשואה לאמיר כבר מעל 15 שנים ואמא לתומר ואופרי.</p>
+          <h2 class="reveal">אם עוד לא הכרנו, נעים מאד</h2>
+          <p class="reveal delay-1">אני טל בלכר, נשואה לאמיר כבר מעל 15 שנים ואמא לתומר ואופרי.</p>
           <p class="reveal delay-2">אני יועצת זוגית, מלווה זוגות צעירים, שלא דמיינו שככה תראה הזוגיות שלהם אחרי לידת הילד הראשון.</p>
           <p class="reveal delay-3">זוגות שמרגישים שהאהבה שם, אבל מאז הלידה הם התרחקו, שהוויכוחים על החינוך ועל הבית נהיו יום יומיים ושהמגע, הקרבה והסקס, מרגישים כמו זיכרון רחוק.</p>
           <p class="reveal delay-4">אני פה כדי להראות שאפשר גם אחרת. עוזרת להפסיק את המריבות, להיזכר באהבה שלהם, להחזיר את המגע והקרבה ולבנות זוגיות שמרגישה כמו בית.</p>
@@ -525,7 +524,11 @@
     <div class="section-inner">
       <div class="section-label reveal">הפתרון</div>
       <h2 class="reveal">בגלל זה יצרתי את קלפי השיח לזוגות.</h2>
-      <p class="reveal delay-1">קלפים שפותחים שיחה, בלי מאמץ, בלי להרגיש שאתם "עובדים על הקשר".</p>
+      <p class="reveal delay-1">20 קלפים שפותחים שיחה אמיתית, בלי מאמץ, בלי להרגיש שאתם "עובדים על הקשר".</p>
+
+      <div class="reveal delay-1" style="text-align:center; margin: 32px 0;">
+        <img src="קלף-בודד.jpg" alt="קלף שיח לזוגות" style="max-width: 220px; width: 100%; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);">
+      </div>
 
       <ul class="benefits-list" style="margin-top: 32px;">
         <li class="reveal delay-1">
@@ -577,7 +580,86 @@
   <!-- FOOTER -->
   <footer>
     <p>טל בלכר ייעוץ זוגי &copy; 2026</p>
+    <p style="margin-top: 8px;"><a href="#accessibility" onclick="document.getElementById('accessibility-modal').style.display='flex'" style="color: #aaa; font-size: 0.82rem; text-decoration: underline;">הצהרת נגישות</a></p>
   </footer>
+
+  <!-- ACCESSIBILITY BUTTON -->
+  <button id="accessibility-btn" onclick="document.getElementById('accessibility-modal').style.display='flex'" aria-label="הצהרת נגישות" style="
+    position: fixed;
+    left: 16px;
+    bottom: 80px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #1a44cc;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  ">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <circle cx="12" cy="4" r="2"/>
+      <path d="M12 7c-2.76 0-5 2.24-5 5h2c0-1.66 1.34-3 3-3s3 1.34 3 3h2c0-2.76-2.24-5-5-5zm-1 10.5V22h2v-4.5l2.5 2.5 1.41-1.41L12 13.17l-4.91 5.42L8.5 20l2.5-2.5z"/>
+    </svg>
+  </button>
+
+  <!-- ACCESSIBILITY MODAL -->
+  <div id="accessibility-modal" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  " onclick="if(event.target===this)this.style.display='none'">
+    <div style="
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      text-align: right;
+      direction: rtl;
+      font-family: 'Assistant', sans-serif;
+      color: #545454;
+      line-height: 1.8;
+    ">
+      <h2 style="font-family: 'Heebo', sans-serif; color: #ee826d; margin-bottom: 20px; font-size: 1.6rem;">הצהרת נגישות</h2>
+      <p>אתר זה של <strong>טל בלכר ייעוץ זוגי</strong> מחויב לנגישות לאנשים עם מוגבלות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות (תשנ"ח-1998) ותקנות הנגישות.</p>
+      <br>
+      <h3 style="font-family: 'Heebo', sans-serif; color: #545454; margin-bottom: 10px;">מה עשינו לנגישות האתר:</h3>
+      <ul style="padding-right: 20px; margin-bottom: 16px;">
+        <li>שימוש בגדלי טקסט קריאים וניגודיות צבעים מתאימה</li>
+        <li>תמיכה בניווט מקלדת</li>
+        <li>תגיות alt לתמונות</li>
+        <li>מבנה כותרות היררכי</li>
+        <li>תמיכה בקוראי מסך</li>
+      </ul>
+      <h3 style="font-family: 'Heebo', sans-serif; color: #545454; margin-bottom: 10px;">פניות בנושא נגישות:</h3>
+      <p>נתקלתם בבעיית נגישות? נשמח לשמוע: <a href="mailto:talblecher1979@gmail.com" style="color: #ee826d;">talblecher1979@gmail.com</a></p>
+      <br>
+      <p style="font-size: 0.85rem; color: #aaa;">הצהרה זו עודכנה בינואר 2026.</p>
+      <br>
+      <button onclick="document.getElementById('accessibility-modal').style.display='none'" style="
+        background: #ee826d;
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-family: 'Heebo', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+      ">סגור</button>
+    </div>
+  </div>
 
   <!-- STICKY CTA MOBILE -->
   <div class="sticky-cta">
