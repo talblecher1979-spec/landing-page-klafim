@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>קלפי שיח לזוגות | טל בלכר</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Assistant:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fffbf0;
+      --teal: #2d6b7f;
+      --coral: #ee826d;
+      --peach: #dbad98;
+      --text: #545454;
+      --text-dark: #2a2a2a;
+      --white: #ffffff;
+      --neon-coral: #ff6b52;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Assistant', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Heebo', sans-serif;
+      color: #545454;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.45s; }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      padding: 16px 24px;
+      text-align: center;
+      border-bottom: none;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    header img { height: 56px; width: auto; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--cream);
+      color: var(--text-dark);
+      padding: 80px 24px 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 250px; height: 250px;
+      background: rgba(238,130,109,0.12);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: #ee826d;
+      line-height: 1.45;
+      margin-bottom: 20px;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #545454;
+      margin-bottom: 36px;
+      animation: fadeDown 0.8s 0.2s ease both;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero .btn-neon {
+      animation: fadeDown 0.8s 0.35s ease both;
+    }
+
+    /* ── NEON BUTTON ── */
+    .btn-neon {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      padding: 18px 44px;
+      border-radius: 50px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      font-family: 'Heebo', sans-serif;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow:
+        0 0 12px rgba(238,130,109,0.6),
+        0 0 30px rgba(238,130,109,0.35),
+        0 0 60px rgba(238,130,109,0.15);
+    }
+    .btn-neon:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow:
+        0 0 18px rgba(238,130,109,0.8),
+        0 0 45px rgba(238,130,109,0.5),
+        0 0 80px rgba(238,130,109,0.25);
+    }
+    .btn-neon:active { transform: scale(0.98); }
+
+    .btn-neon-teal {
+      background: var(--teal);
+      box-shadow:
+        0 0 12px rgba(45,107,127,0.6),
+        0 0 30px rgba(45,107,127,0.35),
+        0 0 60px rgba(45,107,127,0.15);
+    }
+    .btn-neon-teal:hover {
+      box-shadow:
+        0 0 18px rgba(45,107,127,0.8),
+        0 0 45px rgba(45,107,127,0.5),
+        0 0 80px rgba(45,107,127,0.25);
+    }
+
+    /* pulse animation on CTA */
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 12px rgba(238,130,109,0.6), 0 0 30px rgba(238,130,109,0.35); }
+      50% { box-shadow: 0 0 22px rgba(238,130,109,0.9), 0 0 50px rgba(238,130,109,0.55), 0 0 90px rgba(238,130,109,0.3); }
+    }
+    .btn-pulse { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+    /* ── SECTIONS ── */
+    section { padding: 64px 24px; }
+    section:nth-child(even) { background: #ede0d4; }
+
+    .section-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Heebo', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--coral);
+      margin-bottom: 12px;
+    }
+
+    .section-inner h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+
+    .section-inner p { margin-bottom: 14px; }
+
+    /* ── EMPATHY ── */
+    .empathy-text p {
+      font-size: 1.12rem;
+      color: var(--text-dark);
+    }
+
+    /* divider dot */
+    .dot-divider {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 32px 0;
+    }
+    .dot-divider span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--peach);
+      display: inline-block;
+    }
+    .dot-divider span:nth-child(2) { background: var(--coral); }
+
+    /* ── ABOUT ── */
+    .about-wrap {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .about-img {
+      width: 320px;
+      height: 400px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(45,107,127,0.18);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .about-img:hover {
+      transform: scale(1.02) rotate(-1deg);
+      box-shadow: 0 12px 40px rgba(45,107,127,0.28);
+    }
+    .about-text em {
+      color: var(--teal);
+      font-style: normal;
+      font-weight: 600;
+    }
+    @media (max-width: 580px) {
+      .about-wrap { flex-direction: column; align-items: center; text-align: center; }
+      .about-img { width: 170px; height: 210px; }
+    }
+
+    /* ── PROBLEM BOX ── */
+    .problem-box {
+      background: linear-gradient(135deg, #fff3ef, #fff9f5);
+      border-right: 4px solid var(--coral);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-top: 16px;
+      box-shadow: 0 4px 20px rgba(238,130,109,0.08);
+    }
+    .problem-box p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+    .problem-box p:last-child { margin-bottom: 0; }
+
+    /* ── BENEFITS ── */
+    .benefits-list { list-style: none; margin-top: 12px; }
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid #f0e8e2;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+    }
+    .benefits-list li:last-child { border-bottom: none; }
+    .benefit-icon {
+      width: 34px; height: 34px;
+      background: var(--coral);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 2px;
+      box-shadow: 0 0 10px rgba(238,130,109,0.4);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid { display: grid; gap: 20px; margin-top: 12px; }
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 28px 28px 24px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Heebo', sans-serif;
+      font-size: 5rem;
+      color: var(--peach);
+      position: absolute;
+      top: 4px; right: 20px;
+      line-height: 1;
+      opacity: 0.6;
+    }
+    .testimonial-card p {
+      font-size: 1rem;
+      color: var(--text-dark);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      padding-top: 10px;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--teal);
+      font-size: 0.9rem;
+    }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: linear-gradient(135deg, #1e5068 0%, var(--teal) 100%);
+      padding: 72px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: rgba(238,130,109,0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      color: var(--white);
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .cta-section > p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      font-size: 1.05rem;
+      position: relative;
+    }
+
+    /* ── FORM ── */
+    .signup-form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+    .signup-form input {
+      width: 100%;
+      padding: 17px 22px;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-family: 'Assistant', sans-serif;
+      background: rgba(255,255,255,0.95);
+      color: var(--text-dark);
+      text-align: right;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      outline: none;
+    }
+    .signup-form input:focus {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 4px rgba(238,130,109,0.15);
+    }
+    .signup-form input::placeholder { color: #bbb; }
+
+    .cta-note {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      margin-top: 14px;
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.85rem;
+      color: #bbb;
+      background: var(--white);
+    }
+
+    /* ── STICKY CTA MOBILE ── */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--coral);
+      padding: 15px 24px;
+      z-index: 100;
+      text-align: center;
+      box-shadow: 0 -4px 20px rgba(238,130,109,0.4);
+    }
+    .sticky-cta a {
+      color: white;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: block; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-inner h2 { font-size: 1.9rem; }
+      body { padding-bottom: 62px; }
+    }
+
+    /* ── COUNTER ANIMATION ── */
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="לוגו/לוגו צבעוני על רקע שקוף.png" alt="טל בלכר ייעוץ זוגי">
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>שוכבים ביחד בסוף היום,<br>שניכם עייפים מהילדים,<br>ואין מה לדבר.</h1>
+      <p>קלפי שיח שפותחים שיחה אמיתית, בלי מאמץ, בלי להרגיש שאתם "עובדים על הקשר"</p>
+      <a href="#join" class="btn-neon btn-pulse">שלחו לי את הקלפים</a>
+    </div>
+  </section>
+
+  <!-- EMPATHY -->
+  <section>
+    <div class="section-inner empathy-text">
+      <div class="section-label reveal">את לא לבד בזה</div>
+      <p class="reveal delay-1">זה לא שנגמר האהבה.</p>
+      <p class="reveal delay-2">זה שהחיים השתלטו.</p>
+      <p class="reveal delay-3">פתאום אתם שותפים לוגיסטיים — מי לוקח לגן, מי מכין אוכל, מי קם בלילה.</p>
+      <p class="reveal delay-4">ובין לבין, השיחות נעלמו.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label reveal">מי אני</div>
+      <div class="about-wrap">
+        <img src="תמונה2.jpg" alt="טל בלכר" class="about-img reveal-scale">
+        <div class="about-text">
+          <h2 class="reveal">אני טל בלכר</h2>
+          <p class="reveal delay-1">נשואה לאמיר כבר מעל 15 שנים ואמא לתומר ואופרי.</p>
+          <p class="reveal delay-2">אני יועצת זוגית, מלווה זוגות צעירים, שלא דמיינו שככה תראה הזוגיות שלהם אחרי לידת הילד הראשון.</p>
+          <p class="reveal delay-3">זוגות שמרגישים שהאהבה שם, אבל מאז הלידה הם התרחקו, שהוויכוחים על החינוך ועל הבית נהיו יום יומיים ושהמגע, הקרבה והסקס, מרגישים כמו זיכרון רחוק.</p>
+          <p class="reveal delay-4">אני פה כדי להראות שאפשר גם אחרת. עוזרת להפסיק את המריבות, להיזכר באהבה שלהם, להחזיר את המגע והקרבה ולבנות זוגיות שמרגישה כמו בית.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOT PROBLEM -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label reveal">הבעיה האמיתית</div>
+      <h2 class="reveal">הבעיה היא לא שאין לכם על מה לדבר.</h2>
+      <div class="problem-box reveal delay-2">
+        <p>הבעיה היא שאחרי יום שלם של תפקוד, אין כוח לחפש מאיפה להתחיל.</p>
+        <p>מה שצריך זה מישהו שישאל את השאלה הנכונה.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION + WHAT YOU GET -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label reveal">הפתרון</div>
+      <h2 class="reveal">בגלל זה יצרתי את קלפי השיח לזוגות.</h2>
+      <p class="reveal delay-1">קלפים שפותחים שיחה, בלי מאמץ, בלי להרגיש שאתם "עובדים על הקשר".</p>
+
+      <ul class="benefits-list" style="margin-top: 32px;">
+        <li class="reveal delay-1">
+          <div class="benefit-icon">✓</div>
+          <span>שאלות שמביאות אתכם קרובים, גם אחרי יום מתיש</span>
+        </li>
+        <li class="reveal delay-2">
+          <div class="benefit-icon">✓</div>
+          <span>שיחות שנשמעות אמיתיות, לא כמו תרגיל</span>
+        </li>
+        <li class="reveal delay-3">
+          <div class="benefit-icon">✓</div>
+          <span>רגעים של חיבור שאפשר לסחוט גם בין ארוחת ערב להורדה לשינה</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section>
+    <div class="section-inner">
+      <div class="section-label reveal">מה אומרים</div>
+      <h2 class="reveal" style="color: #545454;">זוגות שכבר השתמשו בקלפים</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal delay-1">
+          <p>כשישבתי לקרוא את השאלות, פתאום צפה בי ההערכה הגדולה שיש לי אליו שלפעמים אני לא מספיק חושבת עליה. הזלתי דמעות.</p>
+          <div class="testimonial-author">— ט'</div>
+        </div>
+        <div class="testimonial-card reveal delay-2">
+          <p>אנחנו הרבה לא שמנו למה שטוב בנו. פתאום פתחת פה איזושהי נקודה מרגשת.</p>
+          <div class="testimonial-author">— ש'</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="join">
+    <h2 class="reveal">רוצים את הקלפים?</h2>
+    <p class="reveal delay-1">השאירו פרטים וקלפי השיח יגיעו ישר למייל שלכם.<br>ללא עלות. מתנה ממני אליכם.</p>
+    <form class="signup-form reveal delay-2" onsubmit="return false;">
+      <input type="text" placeholder="השם שלכם" required>
+      <input type="email" placeholder="כתובת המייל" required>
+      <button type="submit" class="btn-neon btn-pulse">שלחו לי את הקלפים</button>
+    </form>
+    <p class="cta-note reveal delay-3">לא ספאם. אף פעם.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>טל בלכר ייעוץ זוגי &copy; 2026</p>
+  </footer>
+
+  <!-- STICKY CTA MOBILE -->
+  <div class="sticky-cta">
+    <a href="#join">שלחו לי את הקלפים ←</a>
+  </div>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
